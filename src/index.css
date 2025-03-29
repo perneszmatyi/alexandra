@@ -1,1 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
+
+@theme {
+  --color-blue-main: #2f3e5b;
+  --color-white-text: #e5f0f5;
+  --color-brown-1: #d6c7b2;
+
+  --font-raleway: "Raleway";
+  --font-montagu-slab: "Montagu Slab";
+}
