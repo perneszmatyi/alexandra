@@ -3,9 +3,9 @@ import { Header, Hero, Info, News, Books } from "./components";
 function App() {
   return (
     <div>
-      <div className="flex flex-col h-screen">
+      <div className="flex flex-col">
         <Header />
-        <Hero />
+        {/* <Hero /> */}
       </div>
       <Info />
       <News />
