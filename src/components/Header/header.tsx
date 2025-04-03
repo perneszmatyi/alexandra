@@ -1,16 +1,16 @@
-import underline from "@/assets/underline.svg";
+import underline from '@/assets/underline.svg';
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const menuItems = [
-    { text: "RÓLAM", href: "#" },
-    { text: "BEJELENTKEZÉS", href: "#" },
-    { text: "AKTUALITÁSOK", href: "#" },
-    { text: "KÖNYVESPOLC", href: "#" },
-    { text: "KAPCSOLAT", href: "#" },
+    { text: 'RÓLAM', href: '#' },
+    { text: 'BEJELENTKEZÉS', href: '#' },
+    { text: 'AKTUALITÁSOK', href: '#' },
+    { text: 'KÖNYVESPOLC', href: '#' },
+    { text: 'KAPCSOLAT', href: '#' },
   ];
 
   const handleOpenMenu = () => {
@@ -19,68 +19,62 @@ export const Header = () => {
 
   useEffect(() => {
     if (isMenuOpen) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = 'unset';
     }
 
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = 'unset';
     };
   }, [isMenuOpen]);
 
   return (
-    <nav className="w-full flex bg-blue-main justify-center h-19 gap-8 items-center">
-      <div className="hidden md:flex justify-center p-11 gap-8 items-center">
+    <nav className="flex h-19 w-full items-center justify-center gap-8 md:h-27">
+      <div className="hidden items-center justify-center gap-8 p-11 md:flex">
         {menuItems.map((item) => (
           <a
-            className="text-lg font-medium font-raleway text-white-text group hover:text-brown-1 cursor-pointer transition-text duration-200"
+            className="font-raleway text-white-text group hover:text-brown-1 transition-text cursor-pointer text-lg font-medium duration-200"
             key={item.text}
           >
             {item.text}
             <img
-              className="absolute opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+              className="absolute opacity-0 transition-opacity duration-200 group-hover:opacity-100"
               src={underline}
             />
           </a>
         ))}
       </div>
 
-      <div className="md:hidden flex flex-col px-6 py-8 w-full h-full justify-start gap-5 items-end">
+      <div className="flex h-full w-full flex-col items-end justify-start gap-5 px-6 py-8 md:hidden">
         <button
-          className="flex flex-col justify-center items-center gap-2 relative z-50"
+          className="relative z-50 flex flex-col items-center justify-center gap-2"
           onClick={handleOpenMenu}
         >
           <div
             className={`h-px w-6 rounded-l-full ${
-              isMenuOpen
-                ? "rotate-45 translate-y-[4.5px] bg-blue-main"
-                : "bg-white-text"
-            } rounded-r-full transition-all duration-300 `}
+              isMenuOpen ? 'bg-blue-main translate-y-[4.5px] rotate-45' : 'bg-white-text'
+            } rounded-r-full transition-all duration-300`}
           ></div>
           <div
-            className={`h-px w-6 bg-white-text rounded-l-full ${
-              isMenuOpen && "hidden bg-blue-main"
+            className={`bg-white-text h-px w-6 rounded-l-full ${
+              isMenuOpen && 'bg-blue-main hidden'
             } rounded-r-full`}
           ></div>
           <div
-            className={`h-px w-6 rounded-l-full  ${
-              isMenuOpen
-                ? "-rotate-45 -translate-y-[4.5px] bg-blue-main"
-                : "bg-white-text"
-            } rounded-r-full transition-all duration-300 `}
+            className={`h-px w-6 rounded-l-full ${
+              isMenuOpen ? 'bg-blue-main -translate-y-[4.5px] -rotate-45' : 'bg-white-text'
+            } rounded-r-full transition-all duration-300`}
           ></div>
         </button>
         <div
-          className={`fixed top-0 right-0 h-screen w-2/3 bg-white-text px-6 
-          transform transition-transform duration-300 ease-in-out
-          ${isMenuOpen ? "translate-x-0" : "translate-x-full"}`}
+          className={`bg-white-text fixed top-0 right-0 h-screen w-2/3 transform px-6 transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
         >
           <div className="mt-18 flex flex-col gap-5">
             {menuItems.map((item) => (
               <a
                 key={item.text}
-                className="text-end text-blue-main font-raleway font-lg font-medium"
+                className="text-blue-main font-raleway font-lg text-end font-medium"
               >
                 {item.text}
               </a>

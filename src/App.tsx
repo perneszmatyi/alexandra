@@ -1,11 +1,11 @@
-import { Header, Hero, Info, News, Books } from "./components";
+import { Header, Hero, Info, News, Books } from './components';
 
 function App() {
   return (
-    <div>
+    <div className="bg-blue-main">
       <div className="flex flex-col">
         <Header />
-        {/* <Hero /> */}
+        <Hero />
       </div>
       <Info />
       <News />
