@@ -12,7 +12,6 @@ export const Header = () => {
     { text: 'KÖNYVESPOLC', href: '#' },
     { text: 'KAPCSOLAT', href: '#' },
   ];
-
   const handleOpenMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -30,7 +29,7 @@ export const Header = () => {
   }, [isMenuOpen]);
 
   return (
-    <nav className="flex h-19 w-full items-center justify-center gap-8 md:h-27">
+    <nav className="z-99 flex h-19 w-full items-center justify-center gap-8 md:h-27">
       <div className="hidden items-center justify-center gap-8 p-11 md:flex">
         {menuItems.map((item) => (
           <a
