@@ -4,6 +4,9 @@ import heroHorMobile from '@/assets/hero-hor-mobile.svg';
 import heroHorDesktop from '@/assets/hero-hor-desktop.svg';
 import heroRightDesktop from '@/assets/hero-right-desktop.svg';
 import heroVertDesktop from '@/assets/hero-vert-desktop.svg';
+import infoLineMobile from '@/assets/info-line-mobile.svg';
+import footerDesktop from '@/assets/footer-desktop.svg';
+import infoLine from '@/assets/info-line.svg';
 
 function App() {
   return (
@@ -22,10 +25,15 @@ function App() {
         <Header />
         <Hero />
       </div>
-      <Info />
-      <Contact />
+      <div className="relative flex flex-col">
+        <img src={infoLineMobile} className="absolute xl:hidden"></img>
+        {/* <img src={infoLine} className="absolute hidden xl:block"></img> */}
+        <Info />
+        <Contact />
+      </div>
       <News />
       <Books />
+
       <Footer />
     </div>
   );
