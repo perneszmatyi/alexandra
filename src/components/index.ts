@@ -6,3 +6,5 @@ export * from './Books/books';
 export * from './Info/info-item';
 export * from './News/news';
 export * from './News/news-card';
+export * from './Footer/footer';
+

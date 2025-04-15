@@ -13,3 +13,38 @@
   --font-raleway: 'Raleway';
   --font-montagu-slab: 'Montagu Slab';
 }
+.news-swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.news-swiper .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.news-swiper .swiper-pagination-bullet {
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--color-white-text);
+  background-color: transparent;
+  opacity: 1;
+
+  transition: background-color 0.3s;
+}
+
+.news-swiper .swiper-pagination-bullet-active {
+  background-color: var(--color-white-text);
+  width: 14px;
+  height: 14px;
+}
+° .news-swiper .swiper-button-next,
+.news-swiper .swiper-button-prev {
+  color: var(--color-white-text);
+}
+
+.news-swiper .swiper-slide .bg-white-text {
+  width: 100%;
+  max-width: 500px;
+}

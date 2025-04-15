@@ -29,8 +29,8 @@ export const Header = () => {
   }, [isMenuOpen]);
 
   return (
-    <nav className="z-99 flex h-19 w-full items-center justify-center gap-8 md:h-27">
-      <div className="hidden items-center justify-center gap-8 p-11 md:flex">
+    <nav className="z-99 flex h-18 w-full items-center justify-center gap-8 lg:h-27">
+      <div className="hidden items-center justify-center gap-8 p-11 md:p-0 lg:flex">
         {menuItems.map((item) => (
           <a
             className="font-raleway text-white-text group hover:text-brown-1 transition-text cursor-pointer text-lg font-medium duration-200"
@@ -45,7 +45,7 @@ export const Header = () => {
         ))}
       </div>
 
-      <div className="flex h-full w-full flex-col items-end justify-start gap-5 px-6 py-8 md:hidden">
+      <div className=">px-6 flex h-full w-full flex-col items-end justify-center gap-5 lg:hidden">
         <button
           className="relative z-50 flex flex-col items-center justify-center gap-2"
           onClick={handleOpenMenu}
