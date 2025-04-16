@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import infoUnderline from '@/assets/info-underline.svg';
+import infoLine from '@/assets/info-line-mobile.svg';
 
 import { InfoItem } from '@/components';
 
@@ -48,8 +49,8 @@ export const Info = () => {
   };
 
   return (
-    <section className="bg-white-text pl-24> pt-38 pr-10 pb-46">
-      <div className="relative flex h-auto flex-col justify-center md:flex-row lg:pt-80">
+    <section className="bg-white-text pt-38 pr-10 pb-46 pl-24 lg:pt-80">
+      <div className="relative flex h-auto flex-col justify-center md:flex-row">
         <div className="relative space-y-10 pb-30 md:space-x-16 lg:space-y-18 lg:space-x-18 lg:pb-66">
           {infoItems.map((item) => {
             return (
@@ -82,31 +83,31 @@ export const Info = () => {
         </div>
       </div>
 
-      <div className="bg-white-text mx-auto flex flex-col gap-20 pl-6 md:flex-row lg:justify-between lg:gap-20 lg:pl-0 xl:w-3/4">
+      <div className="bg-white-text mx-auto mt-90 flex flex-col gap-20 pl-6 md:flex-row lg:justify-between lg:gap-20 lg:pl-0 xl:w-3/4">
         <div className="lg:space-y-8">
-          <h1 className="font-montagu-slab text-blue-main pb-2 text-xl font-medium lg:text-4xl">
+          <h1 className="font-montagu-slab text-blue-main pb-2 text-xl font-medium lg:text-3xl 2xl:text-4xl">
             Időpontkérés
           </h1>
-          <p className="font-raleway text-blue-main text-lg lg:text-2xl">
+          <p className="font-raleway text-blue-main text-lg lg:text-xl 2xl:text-xl">
             Időpontkérés az alábbi email címen lehetséges.
           </p>
         </div>
 
         <div className="lg:space-y-8">
-          <h1 className="font-montagu-slab text-blue-main pb-2 text-xl font-medium lg:text-4xl">
+          <h1 className="font-montagu-slab text-blue-main pb-2 text-xl font-medium lg:text-3xl 2xl:text-4xl">
             Első alkalom
           </h1>
-          <p className="font-raleway text-blue-main text-lg lg:text-2xl">
+          <p className="font-raleway text-blue-main text-lg lg:text-xl 2xl:text-xl">
             Az első egy-két alkalom célja meghatározni az Ön problémáját, illetve megállapításra
             kerül, hogy szükséges-e gyógyszeres kezelés, csoportterápia, vagy égyéb terápiás
             megközelítés.
           </p>
         </div>
         <div className="lg:space-y-8">
-          <h1 className="font-montagu-slab text-blue-main pb-2 text-xl font-medium lg:text-4xl">
+          <h1 className="font-montagu-slab text-blue-main pb-2 text-xl font-medium lg:text-3xl 2xl:text-4xl">
             Terápia
           </h1>
-          <p className="font-raleway text-blue-main text-lg lg:text-2xl">
+          <p className="font-raleway text-blue-main text-lg lg:text-xl 2xl:text-xl">
             A probléma jellegétől és részben az Ön igényeitől függően a terápia néhány alkalmat,
             vagy hosszabb távú elköteleződést jelenthet.
           </p>

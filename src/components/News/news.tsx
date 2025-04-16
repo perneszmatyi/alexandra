@@ -1,11 +1,53 @@
 import { NewsCard } from '@/components';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Navigation } from 'swiper/modules';
 import { CardVariant } from './news-card';
+import newsMobile from '@/assets/news-mobile.svg';
+import newsDesktop from '@/assets/news-desktop.svg';
+
+import 'swiper/css';
+import 'swiper/css/pagination';
+
+const newsItems = [
+  {
+    title: 'Induló csoportok',
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+    cover: true,
+  },
+  {
+    title: 'Kutatás 1',
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+    cover: true,
+  },
+  {
+    title: 'Applikációk',
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+    cover: true,
+  },
+  {
+    title: 'Kutatás 2',
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+    cover: true,
+  },
+  {
+    title: 'Cím',
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+    cover: false,
+  },
+];
 
 export const News = () => {
   return (
-    <section className="w-full pt-10 pb-30 lg:pt-20 lg:pb-26">
-      <div className="h-full">
+    <section className="relative w-full overflow-hidden pt-10 pb-30 lg:pt-20 lg:pb-26">
+      <img src={newsMobile} className="absolute w-full sm:hidden" />
+      <img src={newsDesktop} className="absolute z-1 hidden sm:block" />
+      <div className="relative z-99">
         <div className="mb-16 flex justify-center xl:mb-4">
           <h1 className="font-montagu-slab text-white-text text-3xl font-semibold lg:text-5xl xl:text-7xl">
             Aktualitások
@@ -13,29 +55,34 @@ export const News = () => {
         </div>
 
         <div className="flex justify-center xl:hidden">
-          <div className="relative flex flex-col items-center gap-14">
-            <div className="relative overflow-hidden">
-              <div className="flex transition-transform duration-300">
-                <NewsCard
-                  title="Induló csoportok"
-                  content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
-                  cover={true}
-                  variant={CardVariant.SMALL}
-                />
-              </div>
-            </div>
-
-            <div className="flex gap-1">
-              <div className="border-white-text h-3 w-3 rounded-full border"></div>
-              <div className="border-white-text h-3 w-3 rounded-full border"></div>
-              <div className="border-white-text h-3 w-3 rounded-full border"></div>
-              <div className="border-white-text h-3 w-3 rounded-full border"></div>
-              <div className="border-white-text h-3 w-3 rounded-full border"></div>
+          <div className="relative flex max-w-3/4 flex-col items-center">
+            <div className="relative w-full">
+              <Swiper
+                spaceBetween={30}
+                slidesPerView={1}
+                pagination={{
+                  clickable: true,
+                  dynamicBullets: true,
+                }}
+                modules={[Pagination, Navigation]}
+                className="news-swiper"
+              >
+                {newsItems.map((item, index) => (
+                  <SwiperSlide key={index} className="px-4 pb-10">
+                    <NewsCard
+                      title={item.title}
+                      content={item.content}
+                      variant={CardVariant.SMALL}
+                      cover={item.cover}
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
             </div>
           </div>
         </div>
 
-        <div className="hidden grid-cols-4 grid-rows-10 gap-x-12 px-25 xl:grid xl:h-full">
+        <div className="hidden grid-cols-4 grid-rows-10 gap-x-12 px-25 xl:grid xl:h-[750px] 2xl:h-full">
           <div className="col-start-1 row-span-6 row-start-1 w-full">
             <NewsCard
               title="Induló csoportok"

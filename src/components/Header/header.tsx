@@ -45,7 +45,7 @@ export const Header = () => {
         ))}
       </div>
 
-      <div className=">px-6 flex h-full w-full flex-col items-end justify-center gap-5 lg:hidden">
+      <div className="flex h-full w-full flex-col items-end justify-center gap-5 px-6 lg:hidden">
         <button
           className="relative z-50 flex flex-col items-center justify-center gap-2"
           onClick={handleOpenMenu}
