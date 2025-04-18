@@ -34,11 +34,31 @@ export const Footer = () => {
         </div>
 
         <div className=":gap-15 mt-60 flex flex-col items-start gap-3 md:mt-40 md:flex-row md:justify-center lg:mt-65">
-          <a className="text-white-text font-raleway text-sm lg:text-base">Rólam</a>
-          <a className="text-white-text font-raleway text-sm lg:text-base">Bejelentkezés</a>
-          <a className="text-white-text font-raleway text-sm lg:text-base">Aktualitások</a>
-          <a className="text-white-text font-raleway text-sm lg:text-base">Könyvespolc</a>
-          <a className="text-white-text font-raleway text-sm lg:text-base">
+          <a
+            href="#about"
+            className="text-white-text font-raleway cursor-pointer text-sm lg:text-base"
+          >
+            Rólam
+          </a>
+          <a
+            href="#login"
+            className="text-white-text font-raleway cursor-pointer text-sm lg:text-base"
+          >
+            Bejelentkezés
+          </a>
+          <a
+            href="#news"
+            className="text-white-text font-raleway cursor-pointer text-sm lg:text-base"
+          >
+            Aktualitások
+          </a>
+          <a
+            href="#books"
+            className="text-white-text font-raleway cursor-pointer text-sm lg:text-base"
+          >
+            Könyvespolc
+          </a>
+          <a className="text-white-text font-raleway cursor-pointer text-sm lg:text-base">
             Adatkezelési tájékoztató
           </a>
         </div>
@@ -47,12 +67,17 @@ export const Footer = () => {
           <span className="text-white-text font-raleway text-sm md:text-base">
             Webpage designed by
           </span>
-          <img src={logo} className="md:w-50" />
+          <a href="https://lizardprojects.com/">
+            <img src={logo} className="md:w-50" />
+          </a>
         </div>
         <div className="relative my-10 flex justify-end md:hidden">
-          <button className="bg-brown-1 flex h-15 w-16 cursor-pointer items-center justify-center rounded-full">
+          <a
+            href="#header"
+            className="bg-brown-1 flex h-15 w-16 cursor-pointer items-center justify-center rounded-full"
+          >
             <img src={footerButton} />
-          </button>
+          </a>
         </div>
       </div>
     </section>

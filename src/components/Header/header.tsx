@@ -6,11 +6,11 @@ export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const menuItems = [
-    { text: 'RÓLAM', href: '#' },
-    { text: 'BEJELENTKEZÉS', href: '#' },
-    { text: 'AKTUALITÁSOK', href: '#' },
-    { text: 'KÖNYVESPOLC', href: '#' },
-    { text: 'KAPCSOLAT', href: '#' },
+    { text: 'RÓLAM', href: '#about' },
+    { text: 'BEJELENTKEZÉS', href: '#login' },
+    { text: 'AKTUALITÁSOK', href: '#news' },
+    { text: 'KÖNYVESPOLC', href: '#books' },
+    { text: 'KAPCSOLAT', href: '#contact' },
   ];
   const handleOpenMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -29,12 +29,13 @@ export const Header = () => {
   }, [isMenuOpen]);
 
   return (
-    <nav className="z-99 flex h-18 w-full items-center justify-center gap-8 lg:h-27">
+    <nav id="header" className="z-99 flex h-18 w-full items-center justify-center gap-8 lg:h-27">
       <div className="hidden items-center justify-center gap-8 p-11 md:p-0 lg:flex">
         {menuItems.map((item) => (
           <a
             className="font-raleway text-white-text group hover:text-brown-1 transition-text cursor-pointer text-lg font-medium duration-200"
             key={item.text}
+            href={item.href}
           >
             {item.text}
             <img
@@ -47,7 +48,9 @@ export const Header = () => {
 
       <div className="flex h-full w-full flex-col items-end justify-center gap-5 px-6 lg:hidden">
         <button
-          className="relative z-50 flex flex-col items-center justify-center gap-2"
+          className={`z-50 flex flex-col items-center justify-center gap-2 ${
+            isMenuOpen ? 'fixed top-6 right-6' : 'relative'
+          }`}
           onClick={handleOpenMenu}
         >
           <div
@@ -73,6 +76,7 @@ export const Header = () => {
             {menuItems.map((item) => (
               <a
                 key={item.text}
+                href={item.href}
                 className="text-blue-main font-raleway font-lg text-end font-medium"
               >
                 {item.text}
