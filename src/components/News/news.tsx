@@ -44,10 +44,10 @@ const newsItems = [
 
 export const News = () => {
   return (
-    <section className="relative w-full overflow-hidden pt-10 pb-30 lg:pt-20 lg:pb-26">
+    <section id="news" className="relative w-full overflow-hidden pt-10 pb-30 lg:pt-20 lg:pb-26">
       <img src={newsMobile} className="absolute w-full sm:hidden" />
-      <img src={newsDesktop} className="absolute z-1 hidden sm:block" />
-      <div className="relative z-99">
+      <img src={newsDesktop} className="absolute hidden sm:block" />
+      <div className="relative">
         <div className="mb-16 flex justify-center xl:mb-4">
           <h1 className="font-montagu-slab text-white-text text-3xl font-semibold lg:text-5xl xl:text-7xl">
             Aktualitások

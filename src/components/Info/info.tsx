@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import infoUnderline from '@/assets/info-underline.svg';
-import infoLine from '@/assets/info-line-mobile.svg';
-
-import { InfoItem } from '@/components';
+import number1 from '@/assets/number-1.svg';
+import number2 from '@/assets/number-2.svg';
+import number3 from '@/assets/number-3.svg';
 
 export const Info = () => {
   const [selectedItem, setSelectedItem] = useState<number>();
@@ -49,7 +49,7 @@ export const Info = () => {
   };
 
   return (
-    <section className="bg-white-text pt-38 pr-10 pb-46 pl-24 lg:pt-80">
+    <section id="about" className="bg-white-text pt-38 pr-10 pb-46 pl-24 lg:pt-80">
       <div className="relative flex h-auto flex-col justify-center md:flex-row">
         <div className="relative space-y-10 pb-30 md:space-x-16 lg:space-y-18 lg:space-x-18 lg:pb-66">
           {infoItems.map((item) => {
@@ -76,15 +76,19 @@ export const Info = () => {
             );
           })}
         </div>
-        <div className="hidden w-1/2 pb-30 lg:flex lg:w-[590px] lg:pb-66">
+        <div id="login" className="hidden w-1/2 pb-30 lg:flex lg:w-[590px] lg:pb-66">
           <p className={`text-blue-main font-raleway lg:text-3xl`}>
             {infoItems.find((item) => item.id === selectedItem)?.text}
           </p>
         </div>
       </div>
 
-      <div className="bg-white-text mx-auto mt-90 flex flex-col gap-20 pl-6 md:flex-row lg:justify-between lg:gap-20 lg:pl-0 xl:w-3/4">
-        <div className="lg:space-y-8">
+      <div className="bg-white-text mx-auto flex flex-col gap-20 pl-6 lg:justify-between lg:gap-20 lg:pl-30 xl:mt-90 xl:w-3/4 xl:flex-row">
+        <div id="step-1" className="aborder relative flex-1 lg:space-y-8">
+          <img
+            src={number1}
+            className="absolute hidden translate-x-1/2 -translate-y-50 xl:block"
+          ></img>
           <h1 className="font-montagu-slab text-blue-main pb-2 text-xl font-medium lg:text-3xl 2xl:text-4xl">
             Időpontkérés
           </h1>
@@ -93,7 +97,11 @@ export const Info = () => {
           </p>
         </div>
 
-        <div className="lg:space-y-8">
+        <div id="step-2" className="relative flex-1 lg:space-y-8">
+          <img
+            src={number2}
+            className="absolute hidden translate-x-1/3 -translate-y-50 xl:block"
+          ></img>
           <h1 className="font-montagu-slab text-blue-main pb-2 text-xl font-medium lg:text-3xl 2xl:text-4xl">
             Első alkalom
           </h1>
@@ -103,7 +111,9 @@ export const Info = () => {
             megközelítés.
           </p>
         </div>
-        <div className="lg:space-y-8">
+
+        <div id="step-3" className="relative flex-1 lg:space-y-8">
+          <img src={number3} className="absolute hidden -translate-y-50 xl:block"></img>
           <h1 className="font-montagu-slab text-blue-main pb-2 text-xl font-medium lg:text-3xl 2xl:text-4xl">
             Terápia
           </h1>
