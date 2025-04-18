@@ -1,5 +1,4 @@
 import { NewsCard } from '@/components';
-import { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation } from 'swiper/modules';
 import { CardVariant } from './news-card';

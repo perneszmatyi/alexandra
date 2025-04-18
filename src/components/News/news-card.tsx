@@ -12,7 +12,7 @@ interface NewsCardProps {
   variant: CardVariant;
 }
 
-export const NewsCard = ({ title, content, cover = false, variant }: NewsCardProps) => {
+export const NewsCard = ({ title, variant, content, cover = false }: NewsCardProps) => {
   return (
     <div
       className={`bg-white-text mb-14 flex w-60 flex-col items-center justify-center rounded-2xl shadow-[0.5rem_1rem_0_0_#A6CCDE] md:w-80 xl:h-full xl:w-full`}
@@ -24,8 +24,8 @@ export const NewsCard = ({ title, content, cover = false, variant }: NewsCardPro
         {cover && <div className="bg-brown-2 aspect-[16/9] w-full"></div>}
         <p
           className={classNames('text-blue-main font-raleway leading-tight', {
-            'line-clamp-12 font-medium': (variant = CardVariant.LARGE),
-            'font-regular': (variant = CardVariant.SMALL),
+            'line-clamp-12 font-medium': variant === CardVariant.LARGE,
+            'font-regular': variant === CardVariant.SMALL,
           })}
         >
           {content}

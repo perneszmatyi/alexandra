@@ -1,6 +1,3 @@
-import arrow from '@/assets/arrow.svg';
-import arrowBig from '@/assets/arrow-big.svg';
-import flower from '@/assets/info-flower.svg';
 import kep1 from '@/assets/kep1.png';
 import kep2 from '@/assets/kep2.png';
 import kep3 from '@/assets/kep3.png';
