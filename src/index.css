@@ -37,7 +37,7 @@
 .news-swiper .swiper-pagination-bullet-active {
   background-color: var(--color-white-text);
   width: 14px;
-  height: 14px;
+  height: 12px;
 }
 ° .news-swiper .swiper-button-next,
 .news-swiper .swiper-button-prev {
@@ -47,4 +47,8 @@
 .news-swiper .swiper-slide .bg-white-text {
   width: 100%;
   max-width: 500px;
+}
+
+html {
+  scroll-behavior: smooth;
 }
