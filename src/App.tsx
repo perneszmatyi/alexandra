@@ -102,7 +102,7 @@ function App() {
         <Header />
         <Hero />
       </div>
-      <div id="svg-container" className="relative flex flex-col">
+      <div id="svg-container" className="aflex relative flex-col">
         <img src={infoFlower} className="absolute z-2 hidden xl:block"></img>
         <img src={flowerMobile} className="absolute z-2 block xl:hidden"></img>
 
