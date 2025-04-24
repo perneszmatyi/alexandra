@@ -1,15 +1,19 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import infoUnderline from '@/assets/info-underline.svg';
 import number1 from '@/assets/number-1.svg';
 import number2 from '@/assets/number-2.svg';
 import number3 from '@/assets/number-3.svg';
+import { RefObject } from 'react';
 
-export const Info = () => {
+interface InofProps {
+  step1Ref: RefObject<HTMLDivElement | null>;
+  step2Ref: RefObject<HTMLDivElement | null>;
+  step3Ref: RefObject<HTMLDivElement | null>;
+  gridElementsRef: RefObject<HTMLDivElement | null>;
+}
+
+export const Info = ({ step1Ref, step2Ref, step3Ref, gridElementsRef }: InofProps) => {
   const [selectedItem, setSelectedItem] = useState<number>();
-
-  useEffect(() => {
-    console.log('selectedItem changed to:', selectedItem);
-  }, [selectedItem]);
 
   const infoItems = [
     {
@@ -67,24 +71,31 @@ export const Info = () => {
                     className="absolute opacity-0 transition-opacity duration-200 group-hover:opacity-100 lg:ml-8 lg:h-[30] lg:w-[180px]"
                   />
                 </div>
-                <p
-                  className={`text-blue-main font-raleway lg:hidden ${selectedItem === item.id ? 'h-auto pt-8 opacity-100' : 'h-0 opacity-0'} `}
+                <div
+                  ref={gridElementsRef}
+                  className={`grid transition-all duration-300 lg:hidden ${selectedItem === item.id ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}
                 >
-                  {item.text}
-                </p>
+                  <div className="overflow-hidden">
+                    <p className="text-blue-main font-raleway pt-8">{item.text}</p>
+                  </div>
+                </div>
               </div>
             );
           })}
         </div>
         <div id="login" className="hidden w-1/2 pb-30 lg:flex lg:w-[590px] lg:pb-66">
-          <p className={`text-blue-main font-raleway lg:text-3xl`}>
+          <p
+            className={`text-blue-main font-raleway transition-opacity duration-300 lg:text-3xl ${
+              selectedItem ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
             {infoItems.find((item) => item.id === selectedItem)?.text}
           </p>
         </div>
       </div>
 
-      <div className="bg-white-text mx-auto flex flex-col gap-20 pl-6 lg:justify-between lg:gap-20 lg:pl-30 xl:mt-90 xl:w-3/4 xl:flex-row">
-        <div id="step-1" className="aborder relative flex-1 lg:space-y-8">
+      <div className="bg-white-text mx-auto flex flex-col gap-20 lg:justify-between lg:gap-10 lg:pl-30 xl:mt-90 xl:w-3/4 xl:flex-row xl:gap-20 xl:pl-6">
+        <div ref={step1Ref} className="relative flex-1 lg:space-y-8">
           <img
             src={number1}
             className="absolute hidden translate-x-1/2 -translate-y-50 xl:block"
@@ -97,7 +108,7 @@ export const Info = () => {
           </p>
         </div>
 
-        <div id="step-2" className="relative flex-1 lg:space-y-8">
+        <div ref={step2Ref} className="relative flex-1 lg:space-y-8">
           <img
             src={number2}
             className="absolute hidden translate-x-1/3 -translate-y-50 xl:block"
@@ -112,7 +123,7 @@ export const Info = () => {
           </p>
         </div>
 
-        <div id="step-3" className="relative flex-1 lg:space-y-8">
+        <div ref={step3Ref} className="relative flex-1 lg:space-y-8">
           <img src={number3} className="absolute hidden -translate-y-50 xl:block"></img>
           <h1 className="font-montagu-slab text-blue-main pb-2 text-xl font-medium lg:text-3xl 2xl:text-4xl">
             Terápia
