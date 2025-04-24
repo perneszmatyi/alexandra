@@ -8,7 +8,11 @@ export const Footer = () => {
   return (
     <section className="bg-blue-main relative overflow-hidden">
       <img src={footerMobile} className="absolute w-full translate-y-1/2 md:hidden" />
-      <img src={footerDesktop} className="absolute bottom-0 hidden md:block" />
+      <img
+        src={footerDesktop}
+        style={{ objectFit: 'cover', width: '100%' }}
+        className="absolute bottom-0 hidden md:block"
+      />
 
       <div className="relative px-9 pt-12 md:pb-60 lg:pt-36 lg:pb-60 xl:pb-100">
         <div className="relative mx-auto flex flex-col px-3 md:max-w-lg">
@@ -59,7 +63,7 @@ export const Footer = () => {
             Könyvespolc
           </a>
           <a className="text-white-text font-raleway cursor-pointer text-sm lg:text-base">
-            Adatkezelési tájékoztató
+            Adatkezelési tájékoztató{' '}
           </a>
         </div>
 
@@ -67,7 +71,7 @@ export const Footer = () => {
           <span className="text-white-text font-raleway text-sm md:text-base">
             Webpage designed by
           </span>
-          <a href="https://lizardprojects.com/">
+          <a target="_blank" rel="noopener noreferrer" href="https://lizardprojects.com/">
             <img src={logo} className="md:w-50" />
           </a>
         </div>
