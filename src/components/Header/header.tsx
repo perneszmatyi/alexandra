@@ -12,7 +12,7 @@ export const Header = () => {
     { text: 'KÖNYVESPOLC', href: '#books' },
     { text: 'KAPCSOLAT', href: '#contact' },
   ];
-  const handleOpenMenu = () => {
+  const handleToggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
@@ -51,7 +51,7 @@ export const Header = () => {
           className={`z-50 flex flex-col items-center justify-center gap-2 ${
             isMenuOpen ? 'fixed top-6 right-6' : 'relative'
           }`}
-          onClick={handleOpenMenu}
+          onClick={handleToggleMenu}
         >
           <div
             className={`h-px w-6 rounded-l-full ${
@@ -77,6 +77,7 @@ export const Header = () => {
               <a
                 key={item.text}
                 href={item.href}
+                onClick={handleToggleMenu}
                 className="text-blue-main font-raleway font-lg text-end font-medium"
               >
                 {item.text}
