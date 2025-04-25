@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
+import { use, useEffect, useRef, useState } from 'react';
 
 export const useScrollDrawSVG = (numParts: number) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [lengths, setLengths] = useState(Array(numParts).fill(0));
   const [progress, setProgress] = useState(0);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1280);
 
   const partRefs = Array.from({ length: numParts }, () =>
     useRef<SVGLineElement & SVGPathElement>(null),
@@ -14,6 +15,19 @@ export const useScrollDrawSVG = (numParts: number) => {
   };
 
   useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 1280);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (!isDesktop) {
+      return;
+    }
     calculateLengths();
 
     const handleResize = () => {
@@ -25,9 +39,12 @@ export const useScrollDrawSVG = (numParts: number) => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [isDesktop]);
 
   useEffect(() => {
+    if (!isDesktop) {
+      return;
+    }
     const handleScroll = () => {
       if (!containerRef.current) {
         return;
@@ -36,6 +53,7 @@ export const useScrollDrawSVG = (numParts: number) => {
       const windowHeight = window.innerHeight - 500;
       const totalScroll = rect.height + windowHeight;
       const scrolled = windowHeight - rect.top;
+
       const prog = Math.min(Math.max(scrolled / totalScroll, 0), 1);
       setProgress(prog);
     };
@@ -46,7 +64,17 @@ export const useScrollDrawSVG = (numParts: number) => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleScroll);
     };
-  }, []);
+  }, [isDesktop]);
+
+  if (!isDesktop) {
+    return {
+      containerRef,
+      partRefs,
+      dashoffsets: Array(numParts).fill(0),
+      lengths: Array(numParts).fill(0),
+      progress: 0,
+    };
+  }
 
   const adjustedTotalLength = lengths.reduce(
     (total, len, index) => total + (index === 2 ? len / 2 : len),

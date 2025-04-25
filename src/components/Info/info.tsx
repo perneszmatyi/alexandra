@@ -94,7 +94,7 @@ export const Info = ({ step1Ref, step2Ref, step3Ref, gridElementsRef }: InofProp
         </div>
       </div>
 
-      <div className="bg-white-text mx-auto flex flex-col gap-20 lg:justify-between lg:gap-10 lg:pl-30 xl:mt-90 xl:w-3/4 xl:flex-row xl:gap-20 xl:pl-6">
+      <div className="bg-white-text mx-auto flex flex-col gap-20 pl-6 lg:justify-between lg:gap-10 xl:mt-90 xl:w-3/4 xl:flex-row xl:gap-20 2xl:pl-30">
         <div ref={step1Ref} className="relative flex-1 lg:space-y-8">
           <img
             src={number1}
