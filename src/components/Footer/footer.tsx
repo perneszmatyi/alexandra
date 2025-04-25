@@ -6,7 +6,7 @@ import footerButton from '@/assets/footer-button.svg';
 
 export const Footer = () => {
   return (
-    <section className="bg-blue-main relative overflow-hidden">
+    <footer role="contentinfo" className="bg-blue-main relative overflow-hidden">
       <img src={footerMobile} className="absolute w-full translate-y-1/2 md:hidden" />
       <img
         src={footerDesktop}
@@ -72,18 +72,19 @@ export const Footer = () => {
             Webpage designed by
           </span>
           <a target="_blank" rel="noopener noreferrer" href="https://lizardprojects.com/">
-            <img src={logo} className="md:w-50" />
+            <img src={logo} className="md:w-50" alt="Lizard Projects logo" />
           </a>
         </div>
         <div className="relative my-10 flex justify-end md:hidden">
           <a
             href="#header"
+            aria-label="Vissza a lap tetejére"
             className="bg-brown-1 flex h-15 w-16 cursor-pointer items-center justify-center rounded-full"
           >
-            <img src={footerButton} />
+            <img src={footerButton} alt="" aria-hidden={true} />
           </a>
         </div>
       </div>
-    </section>
+    </footer>
   );
 };

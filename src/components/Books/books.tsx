@@ -65,10 +65,16 @@ export const Books = () => {
               },
             }}
             onMoved={handleMove}
+            aria-label="Könyvek"
           >
-            {books.map((book) => (
+            {books.map((book, index) => (
               <SplideSlide key={book.id}>
-                <img src={book.image} alt={book.title} />
+                <img
+                  src={book.image}
+                  alt={book.title}
+                  aria-hidden={activeIndex !== index}
+                  aria-label={`${book.title} képe`}
+                />
               </SplideSlide>
             ))}
           </Splide>

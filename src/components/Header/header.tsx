@@ -29,7 +29,11 @@ export const Header = () => {
   }, [isMenuOpen]);
 
   return (
-    <nav id="header" className="z-99 flex h-18 w-full items-center justify-center gap-8 lg:h-27">
+    <nav
+      id="header"
+      aria-label="Főmenü"
+      className="z-99 flex h-18 w-full items-center justify-center gap-8 lg:h-27"
+    >
       <div className="hidden items-center justify-center gap-8 p-11 md:p-0 lg:flex">
         {menuItems.map((item) => (
           <a
@@ -48,6 +52,9 @@ export const Header = () => {
 
       <div className="flex h-full w-full flex-col items-end justify-center gap-5 px-6 lg:hidden">
         <button
+          aria-label="Menü megnyitása/bezárása"
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-menu"
           className={`z-50 flex flex-col items-center justify-center gap-2 ${
             isMenuOpen ? 'fixed top-6 right-6' : 'relative'
           }`}
@@ -59,6 +66,8 @@ export const Header = () => {
             } rounded-r-full transition-all duration-300`}
           ></div>
           <div
+            id="mobile-menu"
+            aria-hidden={isMenuOpen}
             className={`bg-white-text h-px w-6 rounded-l-full ${
               isMenuOpen && 'bg-blue-main hidden'
             } rounded-r-full`}

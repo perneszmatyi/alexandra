@@ -31,6 +31,7 @@ export const NewsCard = ({ title, variant, content, cover = false }: NewsCardPro
           {content}
         </p>
         <button
+          aria-label={`${title} olvasása`}
           className={classNames(
             'font-raleway text-blue-light cursor-pointer md:text-xl lg:text-2xl xl:text-3xl',
           )}

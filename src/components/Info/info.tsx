@@ -61,6 +61,9 @@ export const Info = ({ step1Ref, step2Ref, step3Ref, gridElementsRef }: InofProp
               <div key={item.title} className="group">
                 <div className="relative">
                   <h2
+                    role="button"
+                    aria-expanded={selectedItem === item.id}
+                    aria-controls={`${item.title}-content`}
                     className="font-montagu-slab text-blue-main group-hover:text-blue-light transition-color cursor-pointer text-xl font-medium duration-200 lg:text-3xl"
                     onClick={() => handleItemClick(item.id)}
                   >
@@ -112,6 +115,7 @@ export const Info = ({ step1Ref, step2Ref, step3Ref, gridElementsRef }: InofProp
           <img
             src={number2}
             className="absolute hidden translate-x-1/3 -translate-y-50 xl:block"
+            aria-hidden={true}
           ></img>
           <h1 className="font-montagu-slab text-blue-main pb-2 text-xl font-medium lg:text-3xl 2xl:text-4xl">
             Első alkalom
