@@ -16,13 +16,6 @@ export default defineConfig({
   },
   build: {
     assetsInlineLimit: 4096,
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          svgs: ['./src/assets/*.svg'],
-        },
-      },
-    },
   },
   optimizeDeps: {
     exclude: ['*.svg'],
