@@ -9,7 +9,7 @@ interface InofProps {
   step1Ref: RefObject<HTMLDivElement | null>;
   step2Ref: RefObject<HTMLDivElement | null>;
   step3Ref: RefObject<HTMLDivElement | null>;
-  gridElementsRef: RefObject<HTMLDivElement | null>;
+  gridElementsRef: RefObject<(HTMLDivElement | null)[]>;
 }
 
 export const Info = ({ step1Ref, step2Ref, step3Ref, gridElementsRef }: InofProps) => {
@@ -56,7 +56,7 @@ export const Info = ({ step1Ref, step2Ref, step3Ref, gridElementsRef }: InofProp
     <section id="about" className="bg-white-text pt-38 pr-10 pb-46 pl-24 lg:pt-80">
       <div className="relative flex h-auto flex-col justify-center md:flex-row">
         <div className="relative space-y-10 pb-30 md:space-x-16 lg:space-y-18 lg:space-x-18 lg:pb-66">
-          {infoItems.map((item) => {
+          {infoItems.map((item, idx) => {
             return (
               <div key={item.title} className="group">
                 <div className="relative">
@@ -75,7 +75,9 @@ export const Info = ({ step1Ref, step2Ref, step3Ref, gridElementsRef }: InofProp
                   />
                 </div>
                 <div
-                  ref={gridElementsRef}
+                  ref={(el) => {
+                    gridElementsRef.current[idx] = el;
+                  }}
                   className={`grid transition-all duration-300 lg:hidden ${selectedItem === item.id ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}
                 >
                   <div className="overflow-hidden">

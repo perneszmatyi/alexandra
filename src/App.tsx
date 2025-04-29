@@ -22,7 +22,12 @@ function App() {
   const [step2Distance, setStep2Distance] = useState<number>(0);
   const [step3Distance, setStep3Distance] = useState<number>(0);
 
-  const { containerRef, partRefs, dashoffsets, lengths } = useScrollDrawSVG(6);
+  const [layoutKey, setLayoutKey] = useState<number>(0);
+
+  const { containerRef, partRefs, dashoffsets, lengths } = useScrollDrawSVG({
+    layoutKey: layoutKey,
+    numParts: 6,
+  });
 
   const svgContainerRef = useRef<HTMLDivElement>(null);
   const formContainerRef = useRef<HTMLDivElement>(null);
@@ -32,7 +37,7 @@ function App() {
   const step2Ref = useRef<HTMLDivElement>(null);
   const step3Ref = useRef<HTMLDivElement>(null);
 
-  const gridElementsRef = useRef<HTMLDivElement>(null);
+  const gridElementsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const updatePath = () => {
@@ -66,12 +71,19 @@ function App() {
       setStep1Distance(step1Distance);
       setStep2Distance(step2Distance);
       setStep3Distance(step3Distance);
+
+      setLayoutKey((k) => k + 1);
     };
 
     let animationFrameId: number;
     let transitionStartTime: number;
 
     const trackDuringTransition = () => {
+      const currentTime = Date.now();
+      if (currentTime - transitionStartTime > 5000) {
+        cancelAnimationFrame(animationFrameId);
+        return;
+      }
       updatePath();
       animationFrameId = requestAnimationFrame(trackDuringTransition);
     };
@@ -88,10 +100,12 @@ function App() {
       }
     };
 
-    if (gridElementsRef.current) {
-      gridElementsRef.current.addEventListener('transitionstart', handleGridTransition(true));
-      gridElementsRef.current.addEventListener('transitionend', handleGridTransition(false));
-    }
+    gridElementsRef.current.forEach((ref) => {
+      if (ref) {
+        ref.addEventListener('transitionstart', handleGridTransition(true));
+        ref.addEventListener('transitionend', handleGridTransition(false));
+      }
+    });
 
     updatePath();
 
@@ -102,10 +116,13 @@ function App() {
         cancelAnimationFrame(animationFrameId);
       }
 
-      if (gridElementsRef.current) {
-        gridElementsRef.current.removeEventListener('transitionstart', handleGridTransition(true));
-        gridElementsRef.current.removeEventListener('transitionend', handleGridTransition(false));
-      }
+      gridElementsRef.current.forEach((ref) => {
+        if (ref) {
+          ref.removeEventListener('transitionstart', handleGridTransition(true));
+          ref.removeEventListener('transitionend', handleGridTransition(false));
+        }
+      });
+
       window.removeEventListener('resize', updatePath);
     };
   }, []);

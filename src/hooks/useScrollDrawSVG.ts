@@ -1,6 +1,11 @@
-import { use, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-export const useScrollDrawSVG = (numParts: number) => {
+interface ScrollProps {
+  numParts: number;
+  layoutKey: number;
+}
+
+export const useScrollDrawSVG = ({ numParts, layoutKey }: ScrollProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [lengths, setLengths] = useState(Array(numParts).fill(0));
   const [progress, setProgress] = useState(0);
@@ -29,17 +34,7 @@ export const useScrollDrawSVG = (numParts: number) => {
       return;
     }
     calculateLengths();
-
-    const handleResize = () => {
-      calculateLengths();
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [isDesktop]);
+  }, [isDesktop, layoutKey]);
 
   useEffect(() => {
     if (!isDesktop) {
@@ -50,7 +45,7 @@ export const useScrollDrawSVG = (numParts: number) => {
         return;
       }
       const rect = containerRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight - 500;
+      const windowHeight = window.innerHeight - window.innerHeight * 0.2;
       const totalScroll = rect.height + windowHeight;
       const scrolled = windowHeight - rect.top;
 
@@ -58,13 +53,11 @@ export const useScrollDrawSVG = (numParts: number) => {
       setProgress(prog);
     };
     window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleScroll);
     handleScroll();
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleScroll);
     };
-  }, [isDesktop]);
+  }, [isDesktop, layoutKey]);
 
   if (!isDesktop) {
     return {
@@ -77,7 +70,7 @@ export const useScrollDrawSVG = (numParts: number) => {
   }
 
   const adjustedTotalLength = lengths.reduce(
-    (total, len, index) => total + (index === 2 ? len / 2 : len),
+    (total, len, index) => total + (index === 2 || index === 4 ? len / 1 : len),
     0,
   );
 
@@ -85,13 +78,13 @@ export const useScrollDrawSVG = (numParts: number) => {
 
   const dashoffsets = lengths.map((len, index) => {
     const isHorizontal = index === 2 || index === 4;
-    const adjustedLen = isHorizontal ? len / 2 : len;
+    const adjustedLen = isHorizontal ? len / 6 : len;
 
     if (remaining >= adjustedLen) {
       remaining -= adjustedLen;
       return 0;
     } else {
-      const offset = len - remaining * (isHorizontal ? 2 : 1);
+      const offset = len - remaining * (isHorizontal ? 6 : 1);
       remaining = 0;
       return offset > 0 ? offset : 0;
     }
