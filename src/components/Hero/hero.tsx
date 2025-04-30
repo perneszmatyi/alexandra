@@ -1,4 +1,4 @@
-import portrait from '@/assets/portrait.jpg';
+import portrait from '@/assets/portrait.webp';
 import quoteUp from '@/assets/quote-up.svg';
 import heroCircles from '@/assets/hero-circles.svg';
 
