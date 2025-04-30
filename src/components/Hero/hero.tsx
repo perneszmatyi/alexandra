@@ -1,6 +1,6 @@
-import portrait from '../../assets/portrait.png';
-import quoteUp from '../../assets/quote-up.svg';
-import heroCircles from '../../assets/hero-circles.svg';
+import portrait from '@/assets/portrait.jpg';
+import quoteUp from '@/assets/quote-up.svg';
+import heroCircles from '@/assets/hero-circles.svg';
 
 export const Hero = () => {
   return (
