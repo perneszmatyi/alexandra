@@ -1,6 +1,5 @@
-import underline from '@/assets/underline.svg';
-
 import { useEffect, useState } from 'react';
+import './header.css';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,7 +31,7 @@ export const Header = () => {
     <nav
       id="header"
       aria-label="Főmenü"
-      className="z-99 flex h-18 w-full items-center justify-center gap-8 lg:h-27"
+      className="z-99 flex h-18 w-full items-center justify-center gap-8 xl:h-27"
     >
       <div className="hidden items-center justify-center gap-8 p-11 md:p-0 lg:flex">
         {menuItems.map((item) => (
@@ -42,10 +41,20 @@ export const Header = () => {
             href={item.href}
           >
             {item.text}
-            <img
-              className="absolute opacity-0 transition-opacity duration-200 group-hover:opacity-100"
-              src={underline}
-            />
+            <svg
+              width="78"
+              height="12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="absolute translate-x-2 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+            >
+              <path
+                d="M0.978138 9.15086C29.857 1.69347 81.4736 -1.66927 67.7126 6.78053"
+                stroke="#D6C7B2"
+                stroke-width="2"
+                className="underline-path-h"
+              />
+            </svg>
           </a>
         ))}
       </div>

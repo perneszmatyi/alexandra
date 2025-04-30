@@ -1,0 +1,9 @@
+.underline-path-h {
+  stroke-dashoffset: 78;
+  stroke-dasharray: 78;
+  transition: stroke-dashoffset 0.2s ease;
+}
+
+.group:hover .underline-path-h {
+  stroke-dashoffset: 0;
+}

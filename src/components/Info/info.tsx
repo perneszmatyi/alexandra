@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import infoUnderline from '@/assets/info-underline.svg';
 import number1 from '@/assets/number-1.svg';
 import number2 from '@/assets/number-2.svg';
 import number3 from '@/assets/number-3.svg';
 import { RefObject } from 'react';
+import './info.css';
 
 interface InofProps {
   step1Ref: RefObject<HTMLDivElement | null>;
@@ -69,10 +69,20 @@ export const Info = ({ step1Ref, step2Ref, step3Ref, gridElementsRef }: InofProp
                   >
                     {item.title}
                   </h2>
-                  <img
-                    src={infoUnderline}
+
+                  <svg
+                    width="180"
+                    viewBox="0 0 110 14"
+                    fill="none"
                     className="absolute opacity-0 transition-opacity duration-200 group-hover:opacity-100 lg:ml-8 lg:h-[30] lg:w-[180px]"
-                  />
+                  >
+                    <path
+                      d="M0.568572 12.6647C45.4734 1.11376 125.734 -4.09491 104.336 8.99326"
+                      stroke="#3091BE"
+                      stroke-width="2.32461"
+                      className="underline-path"
+                    />
+                  </svg>
                 </div>
                 <div
                   ref={(el) => {
@@ -103,7 +113,7 @@ export const Info = ({ step1Ref, step2Ref, step3Ref, gridElementsRef }: InofProp
         <div ref={step1Ref} className="relative flex-1 lg:space-y-8">
           <img
             src={number1}
-            className="absolute hidden translate-x-1/2 -translate-y-50 xl:block"
+            className="absolute hidden translate-x-1/2 -translate-y-[213px] xl:block"
           ></img>
           <h1 className="font-montagu-slab text-blue-main pb-2 text-xl font-medium lg:text-3xl 2xl:text-4xl">
             Időpontkérés
@@ -116,7 +126,7 @@ export const Info = ({ step1Ref, step2Ref, step3Ref, gridElementsRef }: InofProp
         <div ref={step2Ref} className="relative flex-1 lg:space-y-8">
           <img
             src={number2}
-            className="absolute hidden translate-x-1/3 -translate-y-50 xl:block"
+            className="absolute hidden translate-x-1/3 -translate-y-[213px] xl:block"
             aria-hidden={true}
           ></img>
           <h1 className="font-montagu-slab text-blue-main pb-2 text-xl font-medium lg:text-3xl 2xl:text-4xl">
@@ -130,7 +140,7 @@ export const Info = ({ step1Ref, step2Ref, step3Ref, gridElementsRef }: InofProp
         </div>
 
         <div ref={step3Ref} className="relative flex-1 lg:space-y-8">
-          <img src={number3} className="absolute hidden -translate-y-50 xl:block"></img>
+          <img src={number3} className="absolute hidden -translate-y-[213px] xl:block"></img>
           <h1 className="font-montagu-slab text-blue-main pb-2 text-xl font-medium lg:text-3xl 2xl:text-4xl">
             Terápia
           </h1>
