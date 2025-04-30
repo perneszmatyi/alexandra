@@ -45,7 +45,7 @@ export const useScrollDrawSVG = ({ numParts, layoutKey }: ScrollProps) => {
         return;
       }
       const rect = containerRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight - window.innerHeight * 0.2;
+      const windowHeight = window.innerHeight - window.innerHeight * 0.4;
       const totalScroll = rect.height + windowHeight;
       const scrolled = windowHeight - rect.top;
 
@@ -67,28 +67,32 @@ export const useScrollDrawSVG = ({ numParts, layoutKey }: ScrollProps) => {
       lengths: Array(numParts).fill(0),
       progress: 0,
     };
-  }
-
-  const adjustedTotalLength = lengths.reduce(
-    (total, len, index) => total + (index === 2 || index === 4 ? len / 1 : len),
-    0,
-  );
-
-  let remaining = progress * adjustedTotalLength;
-
-  const dashoffsets = lengths.map((len, index) => {
-    const isHorizontal = index === 2 || index === 4;
-    const adjustedLen = isHorizontal ? len / 6 : len;
-
-    if (remaining >= adjustedLen) {
-      remaining -= adjustedLen;
-      return 0;
+  } else {
+    let multiplier = 1;
+    if (window.innerWidth < 2560) {
+      multiplier = 4;
     } else {
-      const offset = len - remaining * (isHorizontal ? 6 : 1);
-      remaining = 0;
-      return offset > 0 ? offset : 0;
+      multiplier = 2;
     }
-  });
 
-  return { containerRef, partRefs, dashoffsets, lengths, progress };
+    const adjustedTotalLength = lengths.reduce((total, len) => total + len, 0);
+
+    let remaining = progress * adjustedTotalLength;
+
+    const dashoffsets = lengths.map((len, index) => {
+      const isHorizontal = index === 1 || index === 3;
+      const adjustedLen = isHorizontal ? len / multiplier : len;
+
+      if (remaining >= adjustedLen) {
+        remaining -= adjustedLen;
+        return 0;
+      } else {
+        const offset = len - remaining * (isHorizontal ? multiplier : 1);
+        remaining = 0;
+        return offset > 0 ? offset : 0;
+      }
+    });
+
+    return { containerRef, partRefs, dashoffsets, lengths, progress };
+  }
 };

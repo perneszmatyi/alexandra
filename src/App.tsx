@@ -26,7 +26,7 @@ function App() {
 
   const { containerRef, partRefs, dashoffsets, lengths } = useScrollDrawSVG({
     layoutKey: layoutKey,
-    numParts: 6,
+    numParts: 5,
   });
 
   const svgContainerRef = useRef<HTMLDivElement>(null);
@@ -135,7 +135,7 @@ function App() {
 
         <img className="absolute hidden xl:block" src={heroVertDesktop} />
 
-        <img className="absolute top-[72.5px] w-full md:hidden" src={heroHorMobile} />
+        <img className="absolute top-[72.5px] w-full object-cover md:hidden" src={heroHorMobile} />
         <img
           className="absolute hidden w-full md:top-[72.5px] md:block xl:top-26"
           src={heroHorDesktop}
@@ -185,72 +185,57 @@ function App() {
           >
             <path
               ref={partRefs[0]}
-              d="m 86 0 v 1180"
+              d="m 86 0 v 1180    q 0 200 200 200"
+              fill="none"
               stroke="var(--color-blue-main)"
               style={{
                 strokeDasharray: lengths[0],
                 strokeDashoffset: dashoffsets[0],
-                transition: 'storke-dashoffset 0.1s linear',
               }}
             ></path>
-            <path
-              ref={partRefs[1]}
-              d="m 86 1180 q 0 200 200 200"
-              stroke="var(--color-blue-main)"
-              fill="none"
-              style={{
-                strokeDasharray: lengths[1],
-                strokeDashoffset: dashoffsets[1],
-                transition: 'stroke-dashoffset 0.1s linear',
-              }}
-            ></path>
+
             <line
-              ref={partRefs[2]}
+              ref={partRefs[1]}
               x1="286"
               y1="1380"
               x2="90%"
               y2="1380"
               stroke="var(--color-blue-main)"
               style={{
-                strokeDasharray: lengths[2],
-                strokeDashoffset: dashoffsets[2],
-                transition: 'stroke-dashoffset 0.1s linear',
+                strokeDasharray: lengths[1],
+                strokeDashoffset: dashoffsets[1],
               }}
             ></line>
             <path
-              ref={partRefs[3]}
+              ref={partRefs[2]}
               d={`m ${horizontalEndX && horizontalEndX} 1380 q 100 0 100 100 v 600 q 0 100 -100 100`}
               stroke="var(--color-blue-main)"
               fill="none"
               style={{
-                strokeDasharray: lengths[3],
-                strokeDashoffset: dashoffsets[3],
-                transition: 'stroke-dashoffset 0.1s linear',
+                strokeDasharray: lengths[2],
+                strokeDashoffset: dashoffsets[2],
               }}
             ></path>
             <line
-              ref={partRefs[4]}
-              className="border"
+              ref={partRefs[3]}
               x2={endX}
               y1="2180"
               x1="90%"
               y2="2180"
               stroke="var(--color-blue-main)"
               style={{
-                strokeDasharray: lengths[4],
-                strokeDashoffset: dashoffsets[4],
-                transition: 'stroke-dashoffset 0.1s linear',
+                strokeDasharray: lengths[3],
+                strokeDashoffset: dashoffsets[3],
               }}
             ></line>
             <path
-              ref={partRefs[5]}
+              ref={partRefs[4]}
               d={`M ${endX - 10} 2180 a 10 10 0 1 0 20 0 a 10 10 0 1 0 -20 0`}
               stroke="var(--color-blue-main)"
               fill="var(--color-blue-main)"
               style={{
-                strokeDasharray: lengths[5],
-                strokeDashoffset: dashoffsets[5],
-                transition: 'stroke-dashoffset 0.1s linear',
+                strokeDasharray: lengths[4],
+                strokeDashoffset: dashoffsets[4],
               }}
             />
           </svg>
